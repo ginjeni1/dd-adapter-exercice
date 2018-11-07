@@ -13,7 +13,7 @@ class MyApp(object):
             pass
 
 if __name__ == '__main__':
-    net_gateway = vendorapi.NetworkMessageGateway("ottp://perdu.com")
+    net_gateway = vendorapi.NetworkMessageGateway("pttp://perdu.com")
     windows_gateway = vendorapi.WindowsMessageGateway()
     event_logger = sdk.EventLogger()
 

@@ -6,7 +6,7 @@ class NotConnected(Exception):
         super(NotConnected, self).__init__(*args, **kwargs)
 
 
-class OttpResponse(object):
+class PttpResponse(object):
     def __init__(self, payload, time):
         self.payload = payload
         self.time = time
@@ -26,10 +26,14 @@ class NetworkMessageGateway(object):
         self._is_connected = True
 
     def read_from_random_user(self):
+        """
+        :return: an Pttp object containing a message from a random user at a
+                 given time.
+        """
         if not self._is_connected:
             raise NotConnected("you are not connected")
 
-        return OttpResponse(
+        return PttpResponse(
             payload="I love bacon;",
             time=str(random.randint(42000000, 999999999))
         )

@@ -11,7 +11,7 @@ class StringEvent(object):
 
 class EventLogger(object):
     """
-    EventReceiver listens to
+    EventLogger will write into the event buffer the events it receives.
     """
     def receive(self, event):
         if not isinstance(event.timestamp, int):
