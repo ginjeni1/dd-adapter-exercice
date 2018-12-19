@@ -1,3 +1,4 @@
+from .eventlogger import validate_event
 
 class NotConnected(Exception):
     def __init__(self, *args, **kwargs):
@@ -38,16 +39,18 @@ class StringDatabase(object):
 
 
 class StringDatabaseLogger(object):
-    def __init__(self, database):
+    def __init__(self, database, validate=validate_event):
         """
         :type database: StringDatabase
         """
         self.database = database
+        self.validate = validate
 
     def receive(self, event):
         """
         :type event: sdk.eventlogger.StringEvent
         """
+        self.validate(event)
         composed_event = "{time}-{message}".format(message=event.msg, time=event.timestamp)
         self.database.open()
         self.database.insert(composed_event)
