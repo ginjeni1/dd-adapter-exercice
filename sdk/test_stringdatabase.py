@@ -27,7 +27,7 @@ def test_logger_receive_call_insert(mocker):
 
     logger.receive(mocker.Mock(msg="fubar", timestamp=42))
 
-    database.insert.assert_called_with("42-fubar")
+    database.insert.assert_called_with("fubar")
 
 
 def test_logger_receive_raise_when_time_is_not_int(mocker):

@@ -51,7 +51,6 @@ class StringDatabaseLogger(object):
         :type event: sdk.eventlogger.StringEvent
         """
         self.validate(event)
-        composed_event = "{time}-{message}".format(message=event.msg, time=event.timestamp)
         self.database.open()
-        self.database.insert(composed_event)
+        self.database.insert(event.msg)
         self.database.close()
