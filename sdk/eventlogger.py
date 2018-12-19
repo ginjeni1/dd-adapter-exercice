@@ -12,7 +12,7 @@ def validate_event(event):
     if not isinstance(event.timestamp, int):
         raise ValueError("timestamp must be an integer")
     if not isinstance(event.msg, str):
-        raise ValueError("msg must be an integer")
+        raise ValueError("msg must be a str")
 
 
 class EventLogger(object):
