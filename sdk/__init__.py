@@ -1,2 +1,2 @@
-from eventlogger import EventLogger
-from eventlogger import StringEvent
+from eventlogger import EventLogger, StringEvent
+from stringdatabase import StringDatabase, StringDatabaseLogger

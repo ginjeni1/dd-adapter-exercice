@@ -48,5 +48,7 @@ class StringDatabaseLogger(object):
         """
         :type event: sdk.eventlogger.StringEvent
         """
-        # composed_event = event.msg + event.timestamp
+        composed_event = "{time}-{message}".format(message=event.msg, time=event.timestamp)
         self.database.open()
+        self.database.insert(composed_event)
+        self.database.close()
