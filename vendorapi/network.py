@@ -37,4 +37,3 @@ class NetworkMessageGateway(object):
             payload="I love bacon;",
             time=str(random.randint(42000000, 999999999))
         )
-

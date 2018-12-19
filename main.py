@@ -1,5 +1,10 @@
 import sdk
 import vendorapi
+from adapters import (
+    NetworkGateway,
+    WindowsGateway,
+)
+
 
 class MyApp(object):
     def __init__(self, gateways, event_logger):
@@ -8,14 +13,13 @@ class MyApp(object):
 
     def connect_and_log_messages(self):
         for gateway in self._gateways:
-            # !? They all have distinct interface...
-            # TODO : Send the information to the event_logger somehow
-            pass
+            event_logger.receive(gateway.get_message())
+
 
 if __name__ == '__main__':
     net_gateway = vendorapi.NetworkMessageGateway("pttp://perdu.com")
     windows_gateway = vendorapi.WindowsMessageGateway()
     event_logger = sdk.EventLogger()
 
-    app = MyApp([net_gateway, windows_gateway], event_logger)
+    app = MyApp([NetworkGateway(net_gateway), WindowsGateway(windows_gateway)], event_logger)
     app.connect_and_log_messages()
