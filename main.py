@@ -4,6 +4,7 @@ from adapters import (
     NetworkGateway,
     WindowsGateway,
 )
+from potato import PotatoLogger
 
 
 class MyApp(object):
@@ -25,6 +26,11 @@ if __name__ == '__main__':
 
     string_database = sdk.StringDatabase('log.db')
     database_logger = sdk.StringDatabaseLogger(string_database)
+    potato_database = sdk.StringDatabase('potato.db')
+    potato_logger = PotatoLogger(sdk.StringDatabaseLogger(potato_database))
 
-    app = MyApp([NetworkGateway(net_gateway), WindowsGateway(windows_gateway)], [terminal_logger, database_logger])
+    app = MyApp(
+        [NetworkGateway(net_gateway), WindowsGateway(windows_gateway)],
+        [terminal_logger, database_logger, potato_logger],
+    )
     app.connect_and_log_messages()

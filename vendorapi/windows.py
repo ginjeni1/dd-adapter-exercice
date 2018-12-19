@@ -7,4 +7,4 @@ class WindowsMessageGateway(object):
         :return: the last message from your beloved OS.
         """
         return ("You have 5 minutes to finish your work before I install "
-               "updates. You can't postpone")
+               "updates. You can't postpone (potato)")
