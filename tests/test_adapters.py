@@ -12,4 +12,5 @@ def test_windows_gateway_call_get_last_os_message(mocker):
     message = adapter.get_message()
 
     expected_event = StringEvent("fubar", 10)
+    windows_gateway.last_os_message.assert_called_once()
     assert expected_event.msg == message.msg
