@@ -38,6 +38,10 @@ class StringDatabase(object):
         self.close()
 
 
+def default_string_database_formatter(event):
+    return event.msg
+
+
 class StringDatabaseLogger(object):
     def __init__(self, database, validate=validate_event):
         """
@@ -46,11 +50,12 @@ class StringDatabaseLogger(object):
         self.database = database
         self.validate = validate
 
-    def receive(self, event):
+    def receive(self, event, event_formatter=default_string_database_formatter):
         """
         :type event: sdk.eventlogger.StringEvent
+        :param event_formatter: function to format event
         """
         self.validate(event)
         self.database.open()
-        self.database.insert(event.msg)
+        self.database.insert(event_formatter(event))
         self.database.close()
