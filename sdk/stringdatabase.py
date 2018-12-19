@@ -35,3 +35,18 @@ class StringDatabase(object):
     def __delete__(self, instance):
         print("database closed")
         self.close()
+
+
+class StringDatabaseLogger(object):
+    def __init__(self, database):
+        """
+        :type database: StringDatabase
+        """
+        self.database = database
+
+    def receive(self, event):
+        """
+        :type event: sdk.eventlogger.StringEvent
+        """
+        # composed_event = event.msg + event.timestamp
+        self.database.open()

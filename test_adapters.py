@@ -1,4 +1,3 @@
-
 from adapters import WindowsGateway
 from sdk.eventlogger import StringEvent
 
