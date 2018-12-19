@@ -1,4 +1,3 @@
-
 class StringEvent(object):
     def __init__(self, msg, timestamp):
         """
@@ -23,4 +22,3 @@ class EventLogger(object):
             event.timestamp,
             event.msg)
         )
-

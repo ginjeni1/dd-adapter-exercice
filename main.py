@@ -1,6 +1,7 @@
 import sdk
 import vendorapi
 
+
 class MyApp(object):
     def __init__(self, gateways, event_logger):
         self._gateways = gateways
@@ -11,6 +12,7 @@ class MyApp(object):
             # !? They all have distinct interface...
             # TODO : Send the information to the event_logger somehow
             pass
+
 
 if __name__ == '__main__':
     net_gateway = vendorapi.NetworkMessageGateway("pttp://perdu.com")
